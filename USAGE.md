@@ -26,11 +26,11 @@ Step 1: Enter folder path
 
 Step 2: View found books
 ================================================================================
-FOUND 13 BOOKS
+FOUND 5 BOOKS
 ================================================================================
- 1. Van Tharp - Trade Your Way.epub (8.6 MB)
- 2. Stefan ML.epub (27.1 MB) [Already analyzed: 10/10]
- 3. De Prado - Advances in ML.epub (13.1 MB) [Already analyzed: 10/10]
+ 1. Book_A.epub (8.6 MB)
+ 2. Book_B.epub (27.1 MB) [Already analyzed: 10/10]
+ 3. Book_C.epub (13.1 MB)
  ...
 
 Step 3: Select books to analyze
@@ -41,19 +41,19 @@ Step 3: Select books to analyze
 > q            (quit)
 
 Step 4: Watch analysis
-[1/3] Analyzing Van Tharp...
-  📖 Reading: Van Tharp - Trade Your Way.epub
+[1/3] Analyzing Book_A...
+  📖 Reading: Book_A.epub
   ✓ Extracted 30 chapters
   📊 RESULTS:
      Trading concepts: 109
      ML concepts: 15
   🎯 RATING: 10/10
-  ✓ Saved: Van_Tharp_analysis.json
+  ✓ Saved: Book_A_analysis.json
 
 Step 5: View results
-Output folder: 07-TEMPLATES\book-analysis\
-  - Van_Tharp_analysis.json
-  - Van_Tharp_summary.md
+Output folder: book-analysis\
+  - Book_A_analysis.json
+  - Book_A_summary.md
   - MASTER_SUMMARY.md
 ```
 
@@ -97,16 +97,15 @@ All saved to: `07-TEMPLATES\book-analysis\`
 | 0-2 | Breadth (multiple topics) |
 | **Total** | **1-10** |
 
-## 📚 Your Library Results
+## 📚 Example Results
+
+After analyzing your books, you'll see a table like:
 
 | Rating | Book |
 |--------|------|
-| 10/10 | De Prado — Advances in Financial ML |
-| 10/10 | Jansen — ML for Algo Trading |
-| 10/10 | Van Tharp — Trade Your Way |
-| 9/10 | Hilpisch — Derivatives Analytics |
-| 9/10 | Hilpisch — RL for Finance |
-| 6/10 | Volatility (Hilpisch) |
+| 10/10 | Book A — High trading + ML content |
+| 8/10 | Book B — Good code examples |
+| 5/10 | Book C — Basic concepts only |
 
 ## 🔧 Dependencies
 

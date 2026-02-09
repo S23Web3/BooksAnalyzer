@@ -43,7 +43,12 @@ ML_CONCEPTS = {
 
 class StandaloneAnalyzer:
     def __init__(self, output_dir=None):
-        self.output_dir = Path(output_dir) if output_dir else Path(r"C:\Users\User\Documents\Obsidian Vault\07-TEMPLATES\book-analysis")
+        # Default to ./book-analysis/ in current directory
+        if output_dir:
+            self.output_dir = Path(output_dir)
+        else:
+            self.output_dir = Path.cwd() / "book-analysis"
+
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.log_file = self.output_dir / "analysis_log.json"
         self.load_log()
@@ -380,9 +385,9 @@ def scan_and_analyze(folder=None, auto=False):
         print("BOOK ANALYZER - Standalone (No API Credits)")
         print("="*80)
         print("\nEnter folder path to scan for books:")
-        print("(Press Enter for default: C:\\Users\\User\\Downloads)")
+        print("(Press Enter for current directory)")
         folder_input = input("> ").strip()
-        folder = folder_input if folder_input else r"C:\Users\User\Downloads"
+        folder = folder_input if folder_input else str(Path.cwd())
 
     folder = Path(folder)
     if not folder.exists():

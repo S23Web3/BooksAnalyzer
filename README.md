@@ -1,64 +1,54 @@
-# Book Analysis System
+# Book Analyzer
 
-Automated deep analysis of trading/ML/finance books (epub & PDF).
-
-## Files
-
-| Script | Purpose |
-|--------|---------|
-| `deep_book_analyzer.py` | **Main script** — Full chapter-by-chapter deep analysis |
-| `extract_van_tharp_psychology.py` | Extract psychology chapters from epub (Van Tharp example) |
-| `create_psychology_summary.py` | Generate psychology summary from extracted text |
+Automated deep analysis of trading/ML/finance books (epub & PDF). Runs 100% locally — no API credits needed.
 
 ## Quick Start
 
-### 1. Interactive Mode (Recommended)
+### Install Dependencies
 
 ```bash
-cd "c:\Users\User\Documents\Obsidian Vault\PROJECTS\book-extraction"
+pip install -r requirements.txt
+```
+
+### Run Analyzer
+
+**Option 1: Interactive Mode** (Recommended)
+
+```bash
 python standalone_analyzer.py
 ```
 
 **Workflow:**
-1. Script asks for folder path (default: Downloads)
-2. Scans and lists all .epub and .pdf files
-3. Shows which books are already analyzed
-4. You select which to analyze:
+1. Enter folder path to scan (or press Enter for current directory)
+2. View list of found .epub and .pdf files
+3. Select which books to analyze:
    - `1,3,5` — analyze specific books
    - `1-10` — analyze range
    - `all` — analyze everything
    - `new` — only unanalyzed books
    - `q` — quit
 
-### 2. Auto-Mode (No Prompts)
+**Option 2: Auto Mode** (No Prompts)
 
 ```bash
 python standalone_analyzer.py --auto
 ```
 
-Analyzes all books in Downloads automatically. Good for overnight runs.
+Analyzes all books in current directory. Good for batch processing.
 
-### 3. Specify Folder
+**Option 3: Specify Folder**
 
 ```bash
-python standalone_analyzer.py --folder "C:\path\to\books"
+python standalone_analyzer.py --folder "/path/to/books"
 ```
 
-### 4. Python API
+**Option 4: Windows Launcher**
 
-```python
-from standalone_analyzer import StandaloneAnalyzer
-from pathlib import Path
+Double-click `analyze_books.bat` (Windows only)
 
-analyzer = StandaloneAnalyzer()
-book = Path(r"C:\Users\User\Downloads\some_book.epub")
-result = analyzer.analyze_book(book)
-analyzer.save_log()
-```
+## Output
 
-## Output Files
-
-All outputs go to: `C:\Users\User\Documents\Obsidian Vault\07-TEMPLATES\book-analysis\`
+All results saved to: `./book-analysis/` (in same directory as script)
 
 | File | Content |
 |------|---------|
@@ -106,7 +96,7 @@ Finds sentences with critical keywords:
 
 ## Example Output
 
-### Van Tharp Analysis
+### Sample Analysis
 
 **Rating**: 10/10
 
@@ -120,58 +110,31 @@ Finds sentences with critical keywords:
 - Psychology: 106 mentions
 - Entries: 92 mentions
 - Risk: 62 mentions
-- Metrics: 48 mentions
-- Exits: 44 mentions
 
-**Chapter 8 Example**:
-```
-Trading Concepts:
-  - entries: 11 mentions
-    Example: "...time setup. it certainly is not an entry signal..."
-  - psychology: 4 mentions
-    Example: "...lotto bias described in chapter 2..."
-
-Key Sentences:
-  > "Setups refer to conditions that must occur before other action is taken..."
-  > "They are an essential aspect of most entry and exit portions of any system..."
-```
-
-## Existing Books Analyzed
-
-Location: `C:\Users\User\Downloads`
-
-| File | Format | Size |
-|------|--------|------|
-| Van Tharp - Trade Your Way to Financial Freedom | epub | 8.6 MB |
-| Stefan mschine learning | epub | 27.1 MB |
-| López de Prado - Advances in Financial ML | epub | 13.1 MB |
-| Yves Hilpisch - AI in Finance | pdf | 23.7 MB |
-| Yves Hilpisch - Python for Algo Trading | pdf | 4.0 MB |
-| Yves Hilpisch - Derivatives Analytics | epub | 8.6 MB |
-| Yves Hilpisch - Reinforcement Learning | epub | 9.6 MB |
-| John Sweeney - Maximum Adverse Excursion | pdf | 1.4 MB |
-| volatility.epub | epub | 53.6 MB |
+**Files Generated**:
+- `book_name_analysis.json` — full data
+- `book_name_summary.md` — human-readable summary
+- `MASTER_SUMMARY.md` — table of all analyzed books
 
 ## Dependencies
 
 ```bash
-pip install ebooklib beautifulsoup4 pymupdf4llm
+pip install -r requirements.txt
 ```
 
+Includes:
 - `ebooklib` — epub parsing
 - `beautifulsoup4` — HTML/XML extraction
-- `pymupdf4llm` — PDF-to-markdown (optional but recommended)
+- `pymupdf4llm` — PDF-to-markdown conversion
 
 ## Notes
-
-- **PDFs require pymupdf4llm**: Without it, PDFs are skipped
 - **Re-analysis**: Books are logged. If already analyzed, script asks to re-analyze or skip
 - **Windows UTF-8**: Script auto-configures UTF-8 console output on Windows
 - **Long-running**: Large books (50+ MB) can take 5-10 minutes each
 
 ## Advanced: Custom Topics
 
-Edit `TRADING_TOPICS` or `ML_TOPICS` dictionaries in `deep_book_analyzer.py` to add your own concepts to track.
+Edit `TRADING_TOPICS` or `ML_TOPICS` dictionaries in `standalone_analyzer.py` to add your own concepts to track.
 
 Example:
 ```python
