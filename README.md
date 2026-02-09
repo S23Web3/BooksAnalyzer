@@ -1,150 +1,153 @@
 # Book Analyzer
 
-Automated deep analysis of trading/ML/finance books (epub & PDF). Runs 100% locally — no API credits needed.
+> Deep analysis of trading/ML/finance books — 100% local, no API credits
+
+Automated chapter-by-chapter concept extraction from epub and PDF books. Runs entirely on your machine.
+
+## Features
+
+- 🔍 **Deep Analysis** — Chapter-by-chapter concept extraction
+- 📊 **Smart Rating** — 1-10 rating based on content depth
+- 💾 **100% Local** — No API calls, no external services
+- 📝 **Rich Output** — JSON data + Markdown summaries
+- 🔄 **Smart Logging** — Won't re-analyze books unless requested
+- 🎯 **Interactive** — Choose which books to analyze
 
 ## Quick Start
 
-### Install Dependencies
-
 ```bash
+git clone https://github.com/S23Web3/BooksAnalyzer.git
+cd BooksAnalyzer
 pip install -r requirements.txt
-```
-
-### Run Analyzer
-
-**Option 1: Interactive Mode** (Recommended)
-
-```bash
 python standalone_analyzer.py
 ```
 
-**Workflow:**
-1. Enter folder path to scan (or press Enter for current directory)
-2. View list of found .epub and .pdf files
-3. Select which books to analyze:
-   - `1,3,5` — analyze specific books
-   - `1-10` — analyze range
-   - `all` — analyze everything
-   - `new` — only unanalyzed books
-   - `q` — quit
+## How It Works
 
-**Option 2: Auto Mode** (No Prompts)
+1. **Scan** — Point it at a folder with .epub or .pdf files
+2. **Select** — Choose which books to analyze (1,3,5 or 1-10 or all)
+3. **Analyze** — Extracts chapters, finds concepts, detects code/formulas
+4. **Rate** — Generates 1-10 rating based on depth
+5. **Export** — Creates JSON + Markdown summaries
 
+## Output
+
+All results saved to `./book-analysis/`:
+
+```
+book-analysis/
+├── Book_A_analysis.json        # Full data
+├── Book_A_summary.md           # Human-readable
+├── MASTER_SUMMARY.md           # All books ranked
+└── analysis_log.json           # Prevents duplicates
+```
+
+## What It Extracts
+
+### Trading Concepts
+- Entries (signals, triggers, patterns)
+- Exits (stop loss, take profit)
+- Risk (position sizing, drawdown)
+- Backtesting (optimization, walk-forward)
+- Metrics (Sharpe, expectancy, win rate)
+- Psychology (discipline, bias, emotion)
+
+### ML Concepts
+- Supervised (classification, regression)
+- Features (engineering, selection, importance)
+- Models (XGBoost, random forest, neural nets)
+- Validation (cross-validation, k-fold, purging)
+- Metrics (accuracy, precision, SHAP)
+
+### Plus
+- Code detection (Python, formulas)
+- Key sentence extraction
+- Concept frequency analysis
+
+## Rating System
+
+| Points | Criteria |
+|--------|----------|
+| 0-4 | Trading + ML concept coverage |
+| 0-2 | Code & formula presence |
+| 0-2 | Key actionable sentences |
+| 0-2 | Topic breadth |
+| **1-10** | **Total rating** |
+
+## Usage Modes
+
+### Interactive (Recommended)
+```bash
+python standalone_analyzer.py
+```
+- Asks for folder
+- Lists all books
+- You choose which to analyze
+
+### Auto Mode
 ```bash
 python standalone_analyzer.py --auto
 ```
+- Analyzes everything in current directory
+- No prompts
 
-Analyzes all books in current directory. Good for batch processing.
-
-**Option 3: Specify Folder**
-
+### Specify Folder
 ```bash
 python standalone_analyzer.py --folder "/path/to/books"
 ```
 
-**Option 4: Windows Launcher**
+### Windows
+Double-click `analyze_books.bat`
 
-Double-click `analyze_books.bat` (Windows only)
+## Customization
 
-## Output
+Edit `TRADING_CONCEPTS` and `ML_CONCEPTS` in `standalone_analyzer.py`:
 
-All results saved to: `./book-analysis/` (in same directory as script)
-
-| File | Content |
-|------|---------|
-| `{book_name}_DEEP.json` | Full JSON analysis (all chapters, concepts, examples) |
-| `{book_name}_SUMMARY.md` | Human-readable markdown summary |
-| `MASTER_ANALYSIS_SUMMARY.md` | Table of all analyzed books sorted by rating |
-| `deep_analysis_log.json` | Analysis log (prevents re-analysis) |
-
-## What It Analyzes
-
-### Trading Concepts Extracted
-- **entries**: Entry signals, triggers, patterns
-- **exits**: Stop loss, take profit, trailing stops
-- **risk**: Position sizing, drawdown, risk management
-- **backtesting**: Walk-forward, optimization, overfitting
-- **metrics**: Sharpe, Sortino, expectancy, SQN, R-multiples
-- **psychology**: Discipline, bias, emotion, mental models
-
-### ML Concepts Extracted
-- **supervised**: Classification, regression, labeled data
-- **features**: Feature engineering, selection, importance
-- **models**: Random forest, XGBoost, neural networks
-- **validation**: Cross-validation, purging, k-fold
-- **metrics**: Accuracy, precision, recall, F1, SHAP
-
-### Code & Formula Detection
-- Searches for Python code blocks (`def`, `class`, `import`)
-- Detects LaTeX formulas (`$...$`, `\\frac`, `\\sum`)
-
-### Key Sentences Extraction
-Finds sentences with critical keywords:
-- "key", "important", "critical", "must", "essential"
-- "note that", "remember", "always", "never"
-
-## Rating System (1-10)
-
-| Points | Category | Criteria |
-|--------|----------|----------|
-| 0-4 | Concept Coverage | Trading + ML concepts found across chapters |
-| 0-2 | Code/Formulas | Chapters with executable code or math formulas |
-| 0-2 | Key Sentences | Actionable insights extracted |
-| 0-2 | Breadth | Covers multiple trading + ML topics |
-
-**Total**: 1-10 (rounded)
-
-## Example Output
-
-**Rating**: 10/10
-
-**Summary Stats**:
-- Trading concepts: 108
-- ML concepts: 15
-- Chapters with code: 15/30
-- Chapters with formulas: 17/30
-
-**Files Generated**:
-- `{book_name}_analysis.json` — full data
-- `{book_name}_summary.md` — human-readable summary
-- `MASTER_SUMMARY.md` — table of all analyzed books
-
-## Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-Includes:
-- `ebooklib` — epub parsing
-- `beautifulsoup4` — HTML/XML extraction
-- `pymupdf4llm` — PDF-to-markdown conversion
-
-## Notes
-- **Re-analysis**: Books are logged. If already analyzed, script asks to re-analyze or skip
-- **Windows UTF-8**: Script auto-configures UTF-8 console output on Windows
-- **Long-running**: Large books (50+ MB) can take 5-10 minutes each
-
-## Advanced: Custom Topics
-
-Edit `TRADING_CONCEPTS` or `ML_CONCEPTS` dictionaries in `standalone_analyzer.py` to add your own concepts to track.
-
-Example:
 ```python
 TRADING_CONCEPTS = {
-    'custom_topic': ['keyword1', 'keyword2', 'keyword3'],
+    'your_topic': ['keyword1', 'keyword2', 'keyword3'],
 }
 ```
 
-## Todo: Future Enhancements
+## Requirements
 
-- [ ] Compare multiple books side-by-side
-- [ ] Extract code snippets to separate files
-- [ ] Generate concept frequency heatmap
-- [ ] Auto-detect book category (trading/ML/general)
-- [ ] PDF OCR for image-based PDFs
-- [ ] Multi-language support (detect non-English books)
+- Python 3.7+
+- ebooklib (epub parsing)
+- beautifulsoup4 (HTML extraction)
+- pymupdf4llm (PDF conversion)
 
----
+Install: `pip install -r requirements.txt`
 
-**Last Updated**: 2026-02-09
+## Example Output
+
+```
+FOUND 5 BOOKS
+================================================================================
+ 1. Book_A.epub (8.6 MB)
+ 2. Book_B.epub (27.1 MB) [Already analyzed: 10/10]
+ 3. Book_C.pdf (13.1 MB)
+
+Select books to analyze:
+> 1,3
+
+[1/2] Analyzing Book_A...
+  📖 Reading: Book_A.epub
+  ✓ Extracted 30 chapters
+  📊 RESULTS:
+     Trading concepts: 109
+     ML concepts: 15
+  🎯 RATING: 10/10
+  ✓ Saved: Book_A_analysis.json
+```
+
+## License
+
+MIT License — see [LICENSE](LICENSE)
+
+## Author
+
+S23Web3
+
+## Contributing
+
+Issues and PRs welcome!
