@@ -1,8 +1,12 @@
 # Book Analyzer
 
-> Deep analysis of trading/ML/finance books — 100% local, no API credits
+This is made by me and Claude, no ripoffachino (like the famous frappucino with ice cubes) 
+
+> Deep analysis of books — 100% local, no API credits
 
 Automated chapter-by-chapter concept extraction from epub and PDF books. Runs entirely on your machine.
+Asks for the folder where the pdf is in, scans it and analyses it. Select the books with a comma as separator.
+Maybe I will build a gui if I get reactions to this repo. 
 
 ## Features
 
