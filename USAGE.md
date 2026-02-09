@@ -21,8 +21,8 @@ python standalone_analyzer.py
 
 ```
 Step 1: Enter folder path
-> C:\Users\User\Downloads
-(or press Enter for default)
+> /path/to/books
+(or press Enter for current directory)
 
 Step 2: View found books
 ================================================================================
@@ -110,8 +110,7 @@ After analyzing your books, you'll see a table like:
 ## 🔧 Dependencies
 
 ```bash
-pip install ebooklib beautifulsoup4
-pip install pymupdf4llm  # Optional, for PDFs
+pip install -r requirements.txt
 ```
 
 ## ❓ FAQ
@@ -123,7 +122,7 @@ A: No! 100% local processing.
 A: Yes. Books are logged, but you can select already-analyzed books to update them.
 
 **Q: What file types?**
-A: `.epub` (always works) and `.pdf` (needs pymupdf4llm installed)
+A: `.epub` and `.pdf` files
 
 **Q: How long does it take?**
 A: ~30 seconds per book for small books, up to 2 minutes for large ones (50+ MB).
@@ -138,8 +137,7 @@ Edit `TRADING_CONCEPTS` and `ML_CONCEPTS` dictionaries in `standalone_analyzer.p
 Example:
 ```python
 TRADING_CONCEPTS = {
-    'crypto': ['bitcoin', 'ethereum', 'defi'],
-    'hft': ['latency', 'order book', 'market making'],
+    'your_topic': ['keyword1', 'keyword2', 'keyword3'],
 }
 ```
 

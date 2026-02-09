@@ -96,8 +96,6 @@ Finds sentences with critical keywords:
 
 ## Example Output
 
-### Sample Analysis
-
 **Rating**: 10/10
 
 **Summary Stats**:
@@ -106,14 +104,9 @@ Finds sentences with critical keywords:
 - Chapters with code: 15/30
 - Chapters with formulas: 17/30
 
-**Top Concepts**:
-- Psychology: 106 mentions
-- Entries: 92 mentions
-- Risk: 62 mentions
-
 **Files Generated**:
-- `book_name_analysis.json` — full data
-- `book_name_summary.md` — human-readable summary
+- `{book_name}_analysis.json` — full data
+- `{book_name}_summary.md` — human-readable summary
 - `MASTER_SUMMARY.md` — table of all analyzed books
 
 ## Dependencies
@@ -134,13 +127,12 @@ Includes:
 
 ## Advanced: Custom Topics
 
-Edit `TRADING_TOPICS` or `ML_TOPICS` dictionaries in `standalone_analyzer.py` to add your own concepts to track.
+Edit `TRADING_CONCEPTS` or `ML_CONCEPTS` dictionaries in `standalone_analyzer.py` to add your own concepts to track.
 
 Example:
 ```python
-TRADING_TOPICS = {
-    'crypto': ['bitcoin', 'ethereum', 'altcoin', 'defi', 'perpetual'],
-    'hft': ['latency', 'tick data', 'order book', 'market making'],
+TRADING_CONCEPTS = {
+    'custom_topic': ['keyword1', 'keyword2', 'keyword3'],
 }
 ```
 
