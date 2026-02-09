@@ -304,6 +304,11 @@ class StandaloneAnalyzer:
             f.write(f"# Analysis: {result['name']}\n\n")
             f.write(f"**Rating**: {result['rating']}/10\n\n")
             f.write(f"**Size**: {result['size_mb']:.1f} MB | **Chapters**: {result['chapters']}\n\n")
+
+            # Add links to related files
+            json_file = f"{filename}_analysis.json"
+            f.write(f"**Files**: [[{json_file}]] (JSON data) | [[MASTER_SUMMARY]] (all books)\n\n")
+            f.write(f"**Source**: `{result['file']}`\n\n")
             f.write("---\n\n")
 
             f.write("## Summary\n\n")
