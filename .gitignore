@@ -13,9 +13,10 @@ analysis_output.log
 *.json
 *.md
 
-# Keep README and USAGE
+# Keep README, USAGE, and CHANGELOG
 !README.md
 !USAGE.md
+!CHANGELOG.md
 
 # Virtual environment
 venv/

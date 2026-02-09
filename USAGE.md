@@ -1,11 +1,12 @@
 # Book Analyzer - Quick Guide
 
 ## 🎯 What It Does
-Analyzes trading/ML/finance books completely locally (no API credits).
+Analyzes books with concept extraction — completely local (no API credits).
 - Deep chapter-by-chapter analysis
-- Extracts trading & ML concepts
-- Rates books 1-10
+- Extracts concepts based on customizable keyword dictionaries
+- Rates books 1-10 based on content depth
 - Generates JSON + Markdown summaries
+- Pre-configured for finance/ML, customizable for any domain
 
 ## ⚡ Quick Start
 
@@ -45,8 +46,8 @@ Step 4: Watch analysis
   📖 Reading: Book_A.epub
   ✓ Extracted 30 chapters
   📊 RESULTS:
-     Trading concepts: 109
-     ML concepts: 15
+     Category 1 concepts: 109
+     Category 2 concepts: 15
   🎯 RATING: 10/10
   ✓ Saved: Book_A_analysis.json
 
@@ -91,7 +92,7 @@ All saved to: `07-TEMPLATES\book-analysis\`
 
 | Points | What It Measures |
 |--------|------------------|
-| 0-4 | Trading + ML concepts found |
+| 0-4 | Concept coverage (both categories) |
 | 0-2 | Code & formulas present |
 | 0-2 | Key actionable sentences |
 | 0-2 | Breadth (multiple topics) |
@@ -103,7 +104,7 @@ After analyzing your books, you'll see a table like:
 
 | Rating | Book |
 |--------|------|
-| 10/10 | Book A — High trading + ML content |
+| 10/10 | Book A — High concept coverage + code |
 | 8/10 | Book B — Good code examples |
 | 5/10 | Book C — Basic concepts only |
 
@@ -132,14 +133,16 @@ A: Yes. Run the script multiple times, or move all books to one folder first.
 
 ## 🎨 Customization
 
-Edit `TRADING_CONCEPTS` and `ML_CONCEPTS` dictionaries in `standalone_analyzer.py` to track different concepts.
+Edit the concept dictionaries in `standalone_analyzer.py` to track keywords for any domain.
 
 Example:
 ```python
-TRADING_CONCEPTS = {
+CONCEPT_CATEGORY_1 = {
     'your_topic': ['keyword1', 'keyword2', 'keyword3'],
 }
 ```
+
+Pre-configured for finance/ML content, but customize for any domain (history, science, medicine, etc.).
 
 ## 📝 Notes
 

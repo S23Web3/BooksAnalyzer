@@ -1,12 +1,14 @@
 # Book Analyzer
 
-This is made by me and Claude, no ripoffachino (like the famous frappucino with ice cubes) 
+This is made by me and Claude, no ripoffachino (like the famous frappucino with ice cubes)
 
-> Deep analysis of books — 100% local, no API credits
+> Deep analysis of books with concept extraction — 100% local, no API credits
 
 Automated chapter-by-chapter concept extraction from epub and PDF books. Runs entirely on your machine.
-Asks for the folder where the pdf is in, scans it and analyses it. Select the books with a comma as separator.
-Maybe I will build a gui if I get reactions to this repo. 
+Asks for the folder where the books are, scans it and analyses them. Select the books with a comma as separator.
+Pre-configured for finance and machine learning content, but fully customizable for any domain.
+
+Maybe I will build a gui if I get reactions to this repo.
 
 ## Features
 
@@ -48,31 +50,33 @@ book-analysis/
 
 ## What It Extracts
 
-### Trading Concepts
-- Entries (signals, triggers, patterns)
-- Exits (stop loss, take profit)
-- Risk (position sizing, drawdown)
-- Backtesting (optimization, walk-forward)
-- Metrics (Sharpe, expectancy, win rate)
-- Psychology (discipline, bias, emotion)
+### Built-in Concept Categories
+The analyzer comes pre-configured with two concept dictionaries that you can customize:
 
-### ML Concepts
-- Supervised (classification, regression)
-- Features (engineering, selection, importance)
-- Models (XGBoost, random forest, neural nets)
-- Validation (cross-validation, k-fold, purging)
-- Metrics (accuracy, precision, SHAP)
+**Category 1** (example keywords):
+- Keywords like: entry point, signal, pattern, strategy
+- Risk-related terms: position sizing, drawdown, risk management
+- Performance metrics: expectancy, win rate, profit factor
+- Psychological factors: discipline, bias, emotion
+
+**Category 2** (example keywords):
+- Supervised learning: classification, regression, labeled data
+- Feature work: feature engineering, selection, importance
+- Models: random forest, XGBoost, neural networks
+- Validation: cross-validation, k-fold, train-test split
+- Metrics: accuracy, precision, F1, AUC, SHAP
 
 ### Plus
 - Code detection (Python, formulas)
 - Key sentence extraction
 - Concept frequency analysis
+- Fully customizable - edit concept dictionaries for ANY domain
 
 ## Rating System
 
 | Points | Criteria |
 |--------|----------|
-| 0-4 | Trading + ML concept coverage |
+| 0-4 | Concept coverage (both categories) |
 | 0-2 | Code & formula presence |
 | 0-2 | Key actionable sentences |
 | 0-2 | Topic breadth |
@@ -105,13 +109,20 @@ Double-click `analyze_books.bat`
 
 ## Customization
 
-Edit `TRADING_CONCEPTS` and `ML_CONCEPTS` in `standalone_analyzer.py`:
+Edit the two concept dictionaries in `standalone_analyzer.py` to track any keywords you want:
 
 ```python
-TRADING_CONCEPTS = {
+CONCEPT_CATEGORY_1 = {
     'your_topic': ['keyword1', 'keyword2', 'keyword3'],
+    'another_topic': ['keyword4', 'keyword5'],
+}
+
+CONCEPT_CATEGORY_2 = {
+    'different_domain': ['keyword6', 'keyword7'],
 }
 ```
+
+The default configuration extracts financial and machine learning concepts, but you can customize for any domain (history, science, medicine, etc.).
 
 ## Requirements
 
@@ -138,8 +149,8 @@ Select books to analyze:
   📖 Reading: Book_A.epub
   ✓ Extracted 30 chapters
   📊 RESULTS:
-     Trading concepts: 109
-     ML concepts: 15
+     Category 1 concepts: 109
+     Category 2 concepts: 15
   🎯 RATING: 10/10
   ✓ Saved: Book_A_analysis.json
 ```
